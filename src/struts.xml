@@ -5,4 +5,20 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+
+    <!--测试log4j-->
+    <package name="welcome" namespace="/" extends="struts-default">
+        <action name="welcome" class="com.ttg.action.WelcomeAction">
+            <result name="success">index.jsp</result>
+        </action>
+    </package>
+
+    <package name="json" extends="struts-default,json-default">
+        <action name="json" class="com.ttg.action.JsonAction" method="json">
+            <result type="json">
+                <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+                <param name="root">dataMap</param>
+            </result>
+        </action>
+    </package>
 </struts>
